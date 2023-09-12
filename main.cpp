@@ -319,6 +319,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 		}
 
+		// ステージ6初期化
+		if (scene == Scene::STAGE6LOAD) {
+			stage6->Retry();
+			scene = Scene::STAGE6;
+		}
+
 		// ステージ6
 		if (scene == Scene::STAGE6) {
 			stage6->Update(keys, preKeys);

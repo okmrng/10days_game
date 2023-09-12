@@ -92,9 +92,6 @@
     <ClCompile Include="..\10days_game\StageSelect.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\10days_game\TimeLimit.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\10days_game\Title.cpp">
       <Filter>KamataEngine</Filter>
     </ClCompile>
@@ -219,7 +216,6 @@
     <ClInclude Include="..\10days_game\PlayerBullet.h" />
     <ClInclude Include="..\10days_game\Stage1.h" />
     <ClInclude Include="..\10days_game\StageSelect.h" />
-    <ClInclude Include="..\10days_game\TimeLimit.h" />
     <ClInclude Include="..\10days_game\Title.h" />
     <ClInclude Include="..\10days_game\TvBox.h" />
     <ClInclude Include="..\10days_game\TvInfo.h" />

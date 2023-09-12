@@ -93,6 +93,9 @@ void Stage5::Initialize()
 
 	sound_ = Novice::LoadAudio("./resource/bgm/stage.wav");
 	voice_ = 0u;
+
+	// 背景
+	texture_ = Novice::LoadTexture("./resource/background/floor-1.png");
 }
 
 void Stage5::LoadData(const std::string& filename, std::stringstream& targetStream)
@@ -619,7 +622,8 @@ void Stage5::UpdateBoxComands(std::stringstream& boxPopComands)
 void Stage5::Draw()
 {
 	// 背景
-	Novice::DrawBox(0, 0, 1280, 720, 0.0f, BLACK, kFillModeSolid);
+	//Novice::DrawBox(0, 0, 1280, 720, 0.0f, BLACK, kFillModeSolid);
+	Novice::DrawSprite(0, 0, texture_, 1, 1, 0.0f, WHITE);
 
 	// 自機
 	player_->Draw(isGameOver_);

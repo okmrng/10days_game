@@ -126,7 +126,6 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClCompile Include="..\10days_game\PlayerBullet.cpp" />
     <ClCompile Include="..\10days_game\Stage1.cpp" />
     <ClCompile Include="..\10days_game\StageSelect.cpp" />
-    <ClCompile Include="..\10days_game\TimeLimit.cpp" />
     <ClCompile Include="..\10days_game\Title.cpp" />
     <ClCompile Include="..\10days_game\TvBox.cpp" />
     <ClCompile Include="..\10days_game\TvInfo.cpp" />
@@ -166,7 +165,6 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="..\10days_game\PlayerBullet.h" />
     <ClInclude Include="..\10days_game\Stage1.h" />
     <ClInclude Include="..\10days_game\StageSelect.h" />
-    <ClInclude Include="..\10days_game\TimeLimit.h" />
     <ClInclude Include="..\10days_game\Title.h" />
     <ClInclude Include="..\10days_game\TvBox.h" />
     <ClInclude Include="..\10days_game\TvInfo.h" />

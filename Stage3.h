@@ -184,5 +184,8 @@ private:
 	// bgm
 	uint32_t sound_;
 	uint32_t voice_;
+
+	// 背景
+	uint32_t texture_;
 };
 
