@@ -46,5 +46,9 @@ private:
 
 	uint32_t texture_;
 	bool toNext_;
+
+	// bgm
+	uint32_t bgmSound_;
+	uint32_t bgmVoice_;
 };
 

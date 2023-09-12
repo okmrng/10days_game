@@ -18,10 +18,17 @@ void Info::Initialize()
 
 	texture_ = Novice::LoadTexture("./resource/background/info.png");
 	toNext_ = false;
+
+	bgmSound_ = Novice::LoadAudio("./resource/bgm/info.wav");
+	bgmVoice_ = 0u;
 }
 
 void Info::Update(char* keys, char* preKeys)
 {
+	if (!Novice::IsPlayingAudio(bgmVoice_)) {
+		bgmVoice_ = Novice::PlayAudio(bgmSound_, 1, 0.5);
+	}
+
 	inScene_->Update();
 
 	if (inScene_->GetCanPlay()) {
@@ -33,6 +40,7 @@ void Info::Update(char* keys, char* preKeys)
 		outScene_->Update();
 	}
 	if (outScene_->GetToNext()) {
+		Novice::StopAudio(bgmVoice_);
 		toNext_ = true;
 	}
 }
