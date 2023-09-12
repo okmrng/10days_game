@@ -124,6 +124,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	TvInfo* tvInfo = new TvInfo();
 	tvInfo->Initialize();
 
+	// bgm
+	uint32_t sound = Novice::LoadAudio("./resource/bgm/info.wav");
+	uint32_t voice = 0;
+
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
@@ -372,23 +376,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		// 敵情報
 		if (scene == Scene::ENEMYINFO) {
 			enemyInfo->Update(keys, preKeys);
-			stage1->SetCanPlay(true);
-			stage1->SetIsPause(false);
-			stage2->SetCanPlay(true);
-			stage2->SetIsPause(false);
-			stage3->SetCanPlay(true);
-			stage3->SetIsPause(false);
-			stage4->SetCanPlay(true);
-			stage4->SetIsPause(false);
-			stage5->SetCanPlay(true);
-			stage5->SetIsPause(false);
-			stage6->SetCanPlay(true);
-			stage6->SetIsPause(false);
-			stage7->SetCanPlay(true);
-			stage7->SetIsPause(false);
+			stage1->GetPause()->Initialize();
+			stage2->GetPause()->Initialize();
+			stage3->GetPause()->Initialize();
+			stage4->GetPause()->Initialize();
+			stage5->GetPause()->Initialize();
+			stage6->GetPause()->Initialize();
+			stage7->GetPause()->Initialize();
+
+			if (!Novice::IsPlayingAudio(voice)) {
+				voice = Novice::PlayAudio(sound, 1, float(0.2));
+			}
 
 			// 戻る
 			if (enemyInfo->GetToBack()) {
+				Novice::StopAudio(voice);
 				switch (beforeStage)
 				{
 				case Scene::STAGE1:
