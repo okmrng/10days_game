@@ -239,9 +239,6 @@ void Stage7::Update(char* keys, char* preKeys)
 
 		// 再開
 		if (pause_->GetToPlay()) {
-			if (!Novice::IsPlayingAudio(voice_)) {
-				Novice::ResumeAudio(voice_);
-			}
 			canPlay_ = true;
 			isPause_ = false;
 		}
