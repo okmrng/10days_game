@@ -21,6 +21,9 @@ void Info::Initialize()
 
 	bgmSound_ = Novice::LoadAudio("./resource/bgm/info.wav");
 	bgmVoice_ = 0u;
+
+	nextSound_ = Novice::LoadAudio("./resource/SE/next.wav");
+	nextVoice_ = 0u;
 }
 
 void Info::Update(char* keys, char* preKeys)
@@ -33,6 +36,9 @@ void Info::Update(char* keys, char* preKeys)
 
 	if (inScene_->GetCanPlay()) {
 		if (keys[DIK_SPACE] && preKeys[DIK_SPACE] == 0) {
+			if (!Novice::IsPlayingAudio(nextVoice_)) {
+				nextVoice_ = Novice::PlayAudio(nextSound_, 0, 1);
+			}
 			toOutScene_ = true;
 		}
 	}

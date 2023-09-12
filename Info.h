@@ -50,5 +50,9 @@ private:
 	// bgm
 	uint32_t bgmSound_;
 	uint32_t bgmVoice_;
+
+	// se
+	uint32_t nextSound_;
+	uint32_t nextVoice_;
 };
 

@@ -684,10 +684,10 @@ void Stage6::Draw()
 
 	// 制限時間
 	//timeLimitC_->Draw();
-	Novice::ScreenPrintf(1160, 0, "time:%d", timeLimit_);
 
 	// デバッグテキスト
 #ifdef _DEBUG
+	Novice::ScreenPrintf(1160, 0, "time:%d", timeLimit_);
 	Novice::ScreenPrintf(0, 60, "clearCount:%d,boxCount_:%d", clearCount_, boxCount_);
 	Novice::ScreenPrintf(0, 80, "playCount:%d", playCount_);
 	Novice::ScreenPrintf(0, 160, "inGameOverCount:%d", inGameOverCount_);
