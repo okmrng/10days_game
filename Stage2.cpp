@@ -213,7 +213,7 @@ void Stage2::Update(char* keys, char* preKeys)
 
 		// ポーズへ
 		if (keys[DIK_P] && preKeys[DIK_P] == 0) {
-			Novice::PauseAudio(voice_);
+			Novice::StopAudio(voice_);
 			canPlayCount_ = 5;
 			isPause_ = true;
 			canPlay_ = false;
