@@ -2,6 +2,12 @@
 #include "Title.h"
 #include "StageSelect.h"
 #include "Stage1.h"
+#include "Stage2.h"
+#include "Stage3.h"
+#include "Stage4.h"
+#include "Stage5.h"
+#include "Stage6.h"
+#include "Stage7.h"
 #include "EnemyInfo.h"
 #include "WoodInfo.h"
 #include "MetalInfo.h"
@@ -70,6 +76,30 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// ステージ1
 	Stage1* stage1 = new Stage1();
 	stage1->Initialize();
+
+	// ステージ2
+	Stage2* stage2 = new Stage2();
+	stage2->Initialize();
+
+	// ステージ3
+	Stage3* stage3 = new Stage3();
+	stage3->Initialize();
+
+	// ステージ4
+	Stage4* stage4 = new Stage4();
+	stage4->Initialize();
+
+	// ステージ5
+	Stage5* stage5 = new Stage5();
+	stage5->Initialize();
+
+	// ステージ6
+	Stage6* stage6 = new Stage6();
+	stage6->Initialize();
+
+	// ステージ7
+	Stage7* stage7 = new Stage7();
+	stage7->Initialize();
 
 	// ステージがいくつか
 	Scene beforeStage = Scene::STAGE1;
@@ -189,11 +219,167 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			}
 		}
 
+		// ステージ2初期化
+		if (scene == Scene::STAGE2LOAD) {
+			stage2->Retry();
+			scene = Scene::STAGE2;
+		}
+
+		// ステージ2
+		if (scene == Scene::STAGE2) {
+			stage2->Update(keys, preKeys);
+
+			if (stage2->GetPause()->GetToEnemyInfo() == false) {
+				enemyInfo->Initialize();
+			}
+			// 敵情報へ
+			if (stage2->GetPause()->GetToEnemyInfo()) {
+				beforeStage = Scene::STAGE2;
+				scene = Scene::ENEMYINFO;
+			}
+
+			// ステージセレクトへ
+			if (stage2->GetClear()->GetToNext() || stage2->GetGameOver()->GetToStageSelect()) {
+				scene = Scene::STAGESELECTLOAD;
+			}
+		}
+
+		// ステージ3初期化
+		if (scene == Scene::STAGE3LOAD) {
+			stage3->Retry();
+			scene = Scene::STAGE3;
+		}
+
+		// ステージ3
+		if (scene == Scene::STAGE3) {
+			stage3->Update(keys, preKeys);
+
+			if (stage3->GetPause()->GetToEnemyInfo() == false) {
+				enemyInfo->Initialize();
+			}
+			// 敵情報へ
+			if (stage3->GetPause()->GetToEnemyInfo()) {
+				beforeStage = Scene::STAGE3;
+				scene = Scene::ENEMYINFO;
+			}
+
+			// ステージセレクトへ
+			if (stage3->GetClear()->GetToNext() || stage3->GetGameOver()->GetToStageSelect()) {
+				scene = Scene::STAGESELECTLOAD;
+			}
+		}
+
+		// ステージ4初期化
+		if (scene == Scene::STAGE4LOAD) {
+			stage4->Retry();
+			scene = Scene::STAGE4;
+		}
+
+		// ステージ4
+		if (scene == Scene::STAGE4) {
+			stage4->Update(keys, preKeys);
+
+			if (stage4->GetPause()->GetToEnemyInfo() == false) {
+				enemyInfo->Initialize();
+			}
+			// 敵情報へ
+			if (stage4->GetPause()->GetToEnemyInfo()) {
+				beforeStage = Scene::STAGE4;
+				scene = Scene::ENEMYINFO;
+			}
+
+			// ステージセレクトへ
+			if (stage4->GetClear()->GetToNext() || stage4->GetGameOver()->GetToStageSelect()) {
+				scene = Scene::STAGESELECTLOAD;
+			}
+		}
+
+		// ステージ5初期化
+		if (scene == Scene::STAGE5LOAD) {
+			stage5->Retry();
+			scene = Scene::STAGE5;
+		}
+
+		// ステージ5
+		if (scene == Scene::STAGE5) {
+			stage5->Update(keys, preKeys);
+
+			if (stage5->GetPause()->GetToEnemyInfo() == false) {
+				enemyInfo->Initialize();
+			}
+			// 敵情報へ
+			if (stage5->GetPause()->GetToEnemyInfo()) {
+				beforeStage = Scene::STAGE5;
+				scene = Scene::ENEMYINFO;
+			}
+
+			// ステージセレクトへ
+			if (stage5->GetClear()->GetToNext() || stage5->GetGameOver()->GetToStageSelect()) {
+				scene = Scene::STAGESELECTLOAD;
+			}
+		}
+
+		// ステージ6
+		if (scene == Scene::STAGE6) {
+			stage6->Update(keys, preKeys);
+
+			if (stage6->GetPause()->GetToEnemyInfo() == false) {
+				enemyInfo->Initialize();
+			}
+			// 敵情報へ
+			if (stage6->GetPause()->GetToEnemyInfo()) {
+				beforeStage = Scene::STAGE6;
+				scene = Scene::ENEMYINFO;
+			}
+
+			// ステージセレクトへ
+			if (stage6->GetClear()->GetToNext() || stage6->GetGameOver()->GetToStageSelect()) {
+				scene = Scene::STAGESELECTLOAD;
+			}
+		}
+
+		// ステージ7初期化
+		if (scene == Scene::STAGE7LOAD) {
+			stage7->Retry();
+			scene = Scene::STAGE7;
+		}
+
+		// ステージ7
+		if (scene == Scene::STAGE7) {
+			stage7->Update(keys, preKeys);
+
+			if (stage7->GetPause()->GetToEnemyInfo() == false) {
+				enemyInfo->Initialize();
+			}
+			// 敵情報へ
+			if (stage7->GetPause()->GetToEnemyInfo()) {
+				beforeStage = Scene::STAGE1;
+				scene = Scene::ENEMYINFO;
+			}
+
+			// ステージセレクトへ
+			if (stage7->GetClear()->GetToNext() || stage7->GetGameOver()->GetToStageSelect()) {
+				scene = Scene::STAGESELECTLOAD;
+			}
+		}
+
 		// 敵情報
 		if (scene == Scene::ENEMYINFO) {
 			enemyInfo->Update(keys, preKeys);
 			stage1->SetCanPlay(true);
 			stage1->SetIsPause(false);
+			stage2->SetCanPlay(true);
+			stage2->SetIsPause(false);
+			stage3->SetCanPlay(true);
+			stage3->SetIsPause(false);
+			stage4->SetCanPlay(true);
+			stage4->SetIsPause(false);
+			stage5->SetCanPlay(true);
+			stage5->SetIsPause(false);
+			stage6->SetCanPlay(true);
+			stage6->SetIsPause(false);
+			stage7->SetCanPlay(true);
+			stage7->SetIsPause(false);
 
 			// 戻る
 			if (enemyInfo->GetToBack()) {
@@ -203,8 +389,33 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					stage1->GetInScene()->Initialize();
 					scene = Scene::STAGE1;
 					break;
+				case Scene::STAGE2:
+					stage2->GetInScene()->Initialize();
+					scene = Scene::STAGE2;
+					break;
+				case Scene::STAGE3:
+					stage3->GetInScene()->Initialize();
+					scene = Scene::STAGE3;
+					break;
+				case Scene::STAGE4:
+					stage4->GetInScene()->Initialize();
+					scene = Scene::STAGE4;
+					break;
+				case Scene::STAGE5:
+					stage5->GetInScene()->Initialize();
+					scene = Scene::STAGE5;
+					break;
+				case Scene::STAGE6:
+					stage6->GetInScene()->Initialize();
+					scene = Scene::STAGE6;
+					break;
+				case Scene::STAGE7:
+					stage7->GetInScene()->Initialize();
+					scene = Scene::STAGE7;
+					break;
 				}
 			}
+
 
 			// 説明へ
 			// 木箱
@@ -327,6 +538,36 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			stage1->Draw();
 		}
 
+		// ステージ2
+		if (scene == Scene::STAGE2) {
+			stage2->Draw();
+		}
+
+		// ステージ3
+		if (scene == Scene::STAGE3) {
+			stage3->Draw();
+		}
+
+		// ステージ4
+		if (scene == Scene::STAGE4) {
+			stage4->Draw();
+		}
+
+		// ステージ5
+		if (scene == Scene::STAGE5) {
+			stage5->Draw();
+		}
+
+		// ステージ6
+		if (scene == Scene::STAGE6) {
+			stage6->Draw();
+		}
+
+		// ステージ7
+		if (scene == Scene::STAGE7) {
+			stage7->Draw();
+		}
+
 		// 箱情報
 		if (scene == Scene::ENEMYINFO) {
 			enemyInfo->Draw();
@@ -380,6 +621,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	delete title;
 	delete stageSelect;
 	delete stage1;
+	delete stage2;
+	delete stage3;
+	delete stage4;
+	delete stage5;
+	delete stage6;
+	delete stage7;
 	delete enemyInfo;
 	delete woodInfo;
 	delete metalInfo;

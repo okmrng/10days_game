@@ -26,7 +26,7 @@ void Info::Initialize()
 void Info::Update(char* keys, char* preKeys)
 {
 	if (!Novice::IsPlayingAudio(bgmVoice_)) {
-		bgmVoice_ = Novice::PlayAudio(bgmSound_, 1, 0.5);
+		bgmVoice_ = Novice::PlayAudio(bgmSound_, 1, (float)0.2);
 	}
 
 	inScene_->Update();
