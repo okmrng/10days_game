@@ -1,0 +1,6 @@
+// ƒRƒ}ƒ“ƒh,posX,posY,width,height,kinds
+POP,400,90,100,100,4
+POP,100,440,100,100,4
+COUNT,2,,,,
+BULLET,6,,,,
+TIME,1000,,,,

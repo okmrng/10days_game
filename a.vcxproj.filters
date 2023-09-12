@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="KamataEngine">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="KamataEngine\Source">
+      <UniqueIdentifier>{d966e9f8-e880-44ae-8586-a08515e4cffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KamataEngine\Include">
+      <UniqueIdentifier>{4aae4e40-94f7-4d32-9a91-c0c37a2edf0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KamataEngine\Adapter">
+      <UniqueIdentifier>{c6468eb4-788b-4a83-b207-a5f4804e56c5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
+      <Filter>KamataEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\KamataEngine\DirectXGame\base\TextureManager.cpp">
+      <Filter>KamataEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\KamataEngine\DirectXGame\scene\GameScene.cpp">
+      <Filter>KamataEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\KamataEngine\DirectXGame\base\WinApp.cpp">
+      <Filter>KamataEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="C:\KamataEngine\Adapter\Novice.cpp">
+      <Filter>KamataEngine\Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\KamataEngine\DirectXGame\base\StringUtility.cpp">
+      <Filter>KamataEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Box.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Clear.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\EnemyInfo.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\GameOver.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Goal.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\HitEffect.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\IceBox.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\IceInfo.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\InScene.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\MathUtility.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\MetalBox.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\MetalInfo.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\OutScene.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Pause.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Player.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\PlayerBullet.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Stage1.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\StageSelect.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\TimeLimit.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\Title.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\TvBox.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\TvInfo.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\10days_game\WoodInfo.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Info.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\2d\DebugText.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\scene\GameScene.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\input\Input.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\Model.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\base\SafeDelete.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\2d\Sprite.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\base\TextureManager.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\ViewProjection.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\base\WinApp.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\WorldTransform.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\Adapter\Novice.h">
+      <Filter>KamataEngine\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\CircleShadow.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\DebugCamera.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\DirectionalLight.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\LightGroup.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\Material.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\Mesh.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\PointLight.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\3d\SpotLight.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\KamataEngine\DirectXGame\math\Matrix4x4.h" />
+    <ClInclude Include="C:\KamataEngine\DirectXGame\math\Vector2.h" />
+    <ClInclude Include="C:\KamataEngine\DirectXGame\math\Vector3.h" />
+    <ClInclude Include="C:\KamataEngine\DirectXGame\math\Vector4.h" />
+    <ClInclude Include="C:\KamataEngine\DirectXGame\2d\ImGuiManager.h" />
+    <ClInclude Include="C:\KamataEngine\DirectXGame\base\StringUtility.h">
+      <Filter>KamataEngine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\10days_game\Box.h" />
+    <ClInclude Include="..\10days_game\Clear.h" />
+    <ClInclude Include="..\10days_game\EnemyInfo.h" />
+    <ClInclude Include="..\10days_game\GameOver.h" />
+    <ClInclude Include="..\10days_game\Goal.h" />
+    <ClInclude Include="..\10days_game\HitEffect.h" />
+    <ClInclude Include="..\10days_game\IceBox.h" />
+    <ClInclude Include="..\10days_game\IceInfo.h" />
+    <ClInclude Include="..\10days_game\InScene.h" />
+    <ClInclude Include="..\10days_game\MathUtility.h" />
+    <ClInclude Include="..\10days_game\MetalBox.h" />
+    <ClInclude Include="..\10days_game\MetalInfo.h" />
+    <ClInclude Include="..\10days_game\OutScene.h" />
+    <ClInclude Include="..\10days_game\Pause.h" />
+    <ClInclude Include="..\10days_game\Player.h" />
+    <ClInclude Include="..\10days_game\PlayerBullet.h" />
+    <ClInclude Include="..\10days_game\Stage1.h" />
+    <ClInclude Include="..\10days_game\StageSelect.h" />
+    <ClInclude Include="..\10days_game\TimeLimit.h" />
+    <ClInclude Include="..\10days_game\Title.h" />
+    <ClInclude Include="..\10days_game\TvBox.h" />
+    <ClInclude Include="..\10days_game\TvInfo.h" />
+    <ClInclude Include="..\10days_game\WoodInfo.h" />
+    <ClInclude Include="Info.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\10days_game\imgui.ini" />
+  </ItemGroup>
+</Project>
