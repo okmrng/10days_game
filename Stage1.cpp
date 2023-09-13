@@ -24,7 +24,7 @@ Stage1::~Stage1()
 	delete gameOver_;
 	delete pause_;
 	delete inScene_;
-	delete timeLimitC_;
+	//delete timeLimitC_;
 }
 
 void Stage1::Initialize()
@@ -50,16 +50,16 @@ void Stage1::Initialize()
 	inScene_->Initialize();
 
 	// 制限時間
-	timeLimitC_ = new TimeLimit();
-	timeLimitC_->Initialize();
+	//timeLimitC_ = new TimeLimit();
+	//timeLimitC_->Initialize();
 
 	// コマンド
-	LoadData("resource/csv/boxData2.csv", boxPopComands_);
+	LoadData("resource/csv/boxData1.csv", boxPopComands_);
 
 	boxPos_ = Vector2(0.0f, 0.0f);
 	boxSize_ = Vector2(0.0f, 0.0f);
 	boxKinds_ = 0;
-	 
+
 	// クリア判定
 	clearCount_ = 0;
 
@@ -80,6 +80,9 @@ void Stage1::Initialize()
 	// ポーズ
 	isPause_ = false;
 
+	timeLimit_ = 1;
+	timeMax_ = 1;
+
 	// テクスチャハンドル
 	metalHitEffect_ = Novice::LoadTexture("./resource/effect/metal-Effect.png");
 	iceHitEffect_ = Novice::LoadTexture("./resource/effect/ice-Effect.png");
@@ -87,6 +90,12 @@ void Stage1::Initialize()
 	tvHitEffect_ = Novice::LoadTexture("./resource/effect/tv-Effect.png");
 
 	canPlayCount_ = 5;
+
+	sound_ = Novice::LoadAudio("./resource/bgm/stage.wav");
+	voice_ = 0u;
+
+	// 背景
+	texture_ = Novice::LoadTexture("./resource/background/floor-1.png");
 }
 
 void Stage1::LoadData(const std::string& filename, std::stringstream& targetStream)
@@ -122,10 +131,11 @@ void Stage1::Update(char* keys, char* preKeys)
 	inScene_->Update();
 
 	// スタート
-	if(isStart_){
+	if (isStart_) {
 		--playCount_;
 		player_->SetCanShoot(bulletCount_);
 		timeLimit_ = time_;
+		timeMax_ = time_;
 		if (playCount_ <= 0) {
 			canPlayCount_ = 5;
 			canPlay_ = true;
@@ -138,7 +148,11 @@ void Stage1::Update(char* keys, char* preKeys)
 	// 箱
 	UpdateBoxComands(boxPopComands_);
 
-	if(canPlay_){
+	if (canPlay_) {
+		if (!Novice::IsPlayingAudio(voice_)) {
+			voice_ = Novice::PlayAudio(sound_, 1, (float)0.2);
+		}
+
 		--canPlayCount_;
 
 		// 自機
@@ -172,12 +186,14 @@ void Stage1::Update(char* keys, char* preKeys)
 		CheckAllCollision();
 
 		// クリア
-		if (clearCount_ == boxCount_ || clearCount_ == (boxCount_ * 2)) {
-			if(--toClearCount_ <= 0){
+		if (clearCount_ == boxCount_) {
+			if (--toClearCount_ <= 0) {
 				canPlayCount_ = 5;
 				isClear_ = true;
 				canPlay_ = false;
 			}
+
+			Novice::StopAudio(voice_);
 		}
 
 		// ゲームオーバー
@@ -188,6 +204,8 @@ void Stage1::Update(char* keys, char* preKeys)
 			canPlayCount_ = 5;
 			isGameOver_ = true;
 			canPlay_ = false;
+
+			Novice::StopAudio(voice_);
 		}
 
 		// プレイ中はポーズを初期化
@@ -195,23 +213,24 @@ void Stage1::Update(char* keys, char* preKeys)
 
 		// ポーズへ
 		if (keys[DIK_P] && preKeys[DIK_P] == 0) {
+			Novice::StopAudio(voice_);
 			canPlayCount_ = 5;
 			isPause_ = true;
 			canPlay_ = false;
 		}
 
 		// ヒットエフェクト
-		if(hitEffect_){
+		if (hitEffect_) {
 			hitEffect_->Update();
 		}
-		
+
 		// 制限時間減らす
 		if (inScene_->GetCanPlay()) {
 			--timeLimit_;
 		}
 
 		// 制限時間
-		timeLimitC_->Update();
+		//timeLimitC_->Update();
 	}
 
 	// ポーズ
@@ -238,6 +257,7 @@ void Stage1::Update(char* keys, char* preKeys)
 	// ゲームオーバー
 	if (isGameOver_) {
 		gameOver_->Update(keys, preKeys);
+		Novice::StopAudio(voice_);
 
 		// リトライ
 		if (gameOver_->GetToRetry()) {
@@ -254,8 +274,8 @@ void Stage1::CheckAllCollision()
 
 	// 木箱
 	// 自弾との当たり判定
-	#pragma region
-	// 自弾
+#pragma region
+// 自弾
 	posB = player_->GetBulletCollisionPos(); // 座標
 	sizeB = player_->GetBulletSize();		   // 幅
 	for (Box* box : box_) {
@@ -273,10 +293,10 @@ void Stage1::CheckAllCollision()
 			player_->BulletOnCollision();
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// ゴールとの当たり判定
-	#pragma region
+#pragma region
 	for (Box* box : box_) {
 		// 箱
 		posA = box->GetPos();   // 座標
@@ -300,12 +320,12 @@ void Stage1::CheckAllCollision()
 			}
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// 金属製の箱
 	// 自弾との当たり判定
-	#pragma region
-	// 自弾
+#pragma region
+// 自弾
 	posB = player_->GetBulletCollisionPos(); // 座標
 	sizeB = player_->GetBulletSize();		   // 幅
 	for (MetalBox* metalBox : metalBox_) {
@@ -323,10 +343,10 @@ void Stage1::CheckAllCollision()
 			player_->BulletOnCollision();
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// ゴールとの当たり判定
-	#pragma region
+#pragma region
 	for (MetalBox* metalBox : metalBox_) {
 		// 箱
 		posA = metalBox->GetPos();   // 座標
@@ -349,12 +369,12 @@ void Stage1::CheckAllCollision()
 			}
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// 氷
 	// 自弾との当たり判定
-	#pragma region
-	// 自弾
+#pragma region
+// 自弾
 	posB = player_->GetBulletCollisionPos(); // 座標
 	sizeB = player_->GetBulletSize();		   // 幅
 	for (IceBox* iceBox : iceBox_) {
@@ -372,10 +392,10 @@ void Stage1::CheckAllCollision()
 			player_->BulletOnCollision();
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// ゴールとの当たり判定
-	#pragma region
+#pragma region
 	for (IceBox* iceBox : iceBox_) {
 		// 箱
 		posA = iceBox->GetPos();   // 座標
@@ -398,12 +418,12 @@ void Stage1::CheckAllCollision()
 			}
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// tv
 	// 自弾との当たり判定
-	#pragma region
-	// 自弾
+#pragma region
+// 自弾
 	posB = player_->GetBulletCollisionPos(); // 座標
 	sizeB = player_->GetBulletSize();		   // 幅
 	for (TvBox* tvBox : tvBox_) {
@@ -421,10 +441,10 @@ void Stage1::CheckAllCollision()
 			player_->BulletOnCollision();
 		}
 	}
-	#pragma endregion
+#pragma endregion
 
 	// ゴールとの当たり判定
-	#pragma region
+#pragma region
 	for (TvBox* tvBox : tvBox_) {
 		// 箱
 		posA = tvBox->GetPos();   // 座標
@@ -455,7 +475,7 @@ void Stage1::CheckAllCollision()
 			}
 		}
 	}
-	#pragma endregion
+#pragma endregion
 }
 
 void Stage1::AddBox(Vector2 pos, Vector2 size)
@@ -506,13 +526,13 @@ void Stage1::AddTvBox(Vector2 pos, Vector2 size)
 	tvBox_.push_back(obj);
 }
 
-void Stage1::AddHitEffect(uint32_t texture, uint32_t anim, uint32_t animMax, 
+void Stage1::AddHitEffect(uint32_t texture, uint32_t anim, uint32_t animMax,
 	uint32_t flame, uint32_t flameMax, Vector2 pos, Vector2 size)
 {
 	// 生成
 	hitEffect_ = new HitEffect();
 	// 初期化
-	hitEffect_->Initialize(texture,  anim,  animMax, flame, flameMax, pos, size);
+	hitEffect_->Initialize(texture, anim, animMax, flame, flameMax, pos, size);
 }
 
 void Stage1::UpdateBoxComands(std::stringstream& boxPopComands)
@@ -565,7 +585,7 @@ void Stage1::UpdateBoxComands(std::stringstream& boxPopComands)
 			boxSize_.y = sizeY;
 			boxKinds_ = kinds_;
 
-			if(boxKinds_ == 1){
+			if (boxKinds_ == 1) {
 				AddBox(boxPos_, boxSize_);
 			}
 			if (boxKinds_ == 2) {
@@ -599,7 +619,8 @@ void Stage1::UpdateBoxComands(std::stringstream& boxPopComands)
 void Stage1::Draw()
 {
 	// 背景
-	Novice::DrawBox(0, 0, 1280, 720, 0.0f, BLACK, kFillModeSolid);
+	//Novice::DrawBox(0, 0, 1280, 720, 0.0f, BLACK, kFillModeSolid);
+	Novice::DrawSprite(0, 0, texture_, 1, 1, 0.0f, WHITE);
 
 	// 自機
 	player_->Draw(isGameOver_);
@@ -646,32 +667,42 @@ void Stage1::Draw()
 	}
 
 	// ヒットエフェクト
-	if(hitEffect_){
+	if (hitEffect_) {
 		hitEffect_->Draw();
 	}
+
+	// 時間ゲージ
+	Novice::DrawBox(1100, 10, 170, 20, 0.0f, RED, kFillModeSolid);
+	Novice::DrawBox(1100, 10, 170 * timeLimit_ / time_, 20, 0.0f, GREEN, kFillModeSolid);
+
+	// 弾数
+	Novice::DrawBox(1100, 40, 170, 20, 0.0f, RED, kFillModeSolid);
+	Novice::DrawBox(1100, 40, 170 * player_->GetCanShoot() / bulletCount_, 20, 0.0f, BLUE, kFillModeSolid);
 
 	// シーン遷移演出
 	inScene_->Draw();
 
 	// 制限時間
-	timeLimitC_->Draw();
+	//timeLimitC_->Draw();
 
 	// デバッグテキスト
-	#ifdef _DEBUG
-	Novice::ScreenPrintf(0, 60, "clearCount:%d,boxCount_:%d", clearCount_,boxCount_);
+#ifdef _DEBUG
+	Novice::ScreenPrintf(1160, 0, "time:%d", timeLimit_);
+	Novice::ScreenPrintf(0, 60, "clearCount:%d,boxCount_:%d", clearCount_, boxCount_);
 	Novice::ScreenPrintf(0, 80, "playCount:%d", playCount_);
-	Novice::ScreenPrintf(0, 140, "time:%d", timeLimit_);
 	Novice::ScreenPrintf(0, 160, "inGameOverCount:%d", inGameOverCount_);
 	Novice::ScreenPrintf(0, 420, "power:%d", player_->GetBulletPower());
 	if (player_->GetBullet()) {
 		Novice::ScreenPrintf(0, 60, "true");
 	}
-	#endif // _DEBUG
+#endif // _DEBUG
 
 }
 
 void Stage1::Retry()
 {
+	Novice::StopAudio(voice_);
+
 	Initialize();
 
 	// ボックス関連データを削除
@@ -693,7 +724,7 @@ void Stage1::Retry()
 	tvBox_.clear();
 
 	// CSVファイルを再度読み込む
-	std::string csvFilePath = "resource/csv/boxData2.csv";
+	std::string csvFilePath = "resource/csv/boxData1.csv";
 	std::stringstream boxPopComands; // リトライ時に新たなストリームを用意
 	LoadData(csvFilePath, boxPopComands);
 

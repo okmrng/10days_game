@@ -11,14 +11,11 @@
 #include "Pause.h"
 #include "HitEffect.h"
 #include "InScene.h"
-#include "TimeLimit.h"
+//#include "TimeLimit.h"
 #include <list>
 #include <sstream>
 #include <cassert>
 
-/// <summary>
-/// ステージ1
-/// </summary>
 class Stage1
 {
 public:
@@ -113,6 +110,7 @@ public:
 	Clear* GetClear() { return clear_; }
 	GameOver* GetGameOver() { return gameOver_; }
 	InScene* GetInScene() { return inScene_; }
+	uint32_t GetVoice() { return voice_; }
 
 	// セッター
 	void SetCanPlay(bool canPlay) { canPlay_ = canPlay; }
@@ -137,7 +135,8 @@ private:
 
 	InScene* inScene_; // シーン遷移演出
 
-	TimeLimit* timeLimitC_; // 制限時間
+	//TimeLimit* timeLimitC_; // 制限時間
+	//TimeLimit* bulletC_;    // 弾数
 
 	std::stringstream boxPopComands_; // コマンド
 
@@ -175,7 +174,15 @@ private:
 
 	int32_t timeLimit_; // 制限時間
 	int32_t time_;      // 制限時間csv入力用
+	int32_t timeMax_;
 
 	int32_t canPlayCount_; // 誤射対策
+
+	// bgm
+	uint32_t sound_;
+	uint32_t voice_;
+
+	// 背景
+	uint32_t texture_;
 };
 
